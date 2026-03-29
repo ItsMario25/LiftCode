@@ -71,6 +71,15 @@ fun DetailScreen(
         try { ErrorMock.getErrorByCode(errorCode) } catch (e: Exception) { null }
     }
 
+    // ✅ Fix optimización: categoryName solo se recalcula cuando cambia error.category
+    val categoryName = remember(error?.category) {
+        error?.category?.name
+            ?.replace("_", " ")
+            ?.lowercase()
+            ?.replaceFirstChar { if (it.isLowerCase()) it.titlecase() else it.toString() }
+            ?: ""
+    }
+
     var isFavorite by remember { mutableStateOf(false) }
     val scope = rememberCoroutineScope()
 
@@ -78,7 +87,6 @@ fun DetailScreen(
         isFavorite = favoritesRepository.isFavorite(errorCode)
     }
 
-    // Colores según severidad
     val severityContainerColor = when (error?.severity) {
         ErrorSeverity.BLOQUEO -> MaterialTheme.colorScheme.errorContainer
         ErrorSeverity.ADVERTENCIA -> MaterialTheme.colorScheme.tertiaryContainer
@@ -125,7 +133,6 @@ fun DetailScreen(
         }
     ) { paddingValues ->
         if (error == null) {
-            // ── Estado de error ───────────────────────────────────────────────
             Box(
                 modifier = Modifier
                     .fillMaxSize()
@@ -228,16 +235,12 @@ fun DetailScreen(
                     EquipmentInfoCard(
                         brand = error.brand,
                         equipment = error.equipment,
-                        category = error.category.name.replace("_", " ").lowercase()
-                            .replaceFirstChar { if (it.isLowerCase()) it.titlecase() else it.toString() }
+                        // ✅ Usa categoryName precalculado
+                        category = categoryName
                     )
-
                     DescriptionCard(description = error.description)
-
                     CausesCard(causes = error.causes)
-
                     ActionsCard(actions = error.actions)
-
                     SecurityNote(severity = error.severity)
                 }
             }
@@ -249,10 +252,25 @@ fun DetailScreen(
 
 @Composable
 fun SeverityBadge(severity: ErrorSeverity) {
-    val (color, text) = when (severity) {
-        ErrorSeverity.BLOQUEO -> Pair(MaterialTheme.colorScheme.error, "BLOQUEO")
-        ErrorSeverity.ADVERTENCIA -> Pair(MaterialTheme.colorScheme.tertiary, "ADVERTENCIA")
-        ErrorSeverity.INFO -> Pair(MaterialTheme.colorScheme.secondary, "INFORMATIVO")
+    // Color del contenedor según severidad
+    val containerColor = when (severity) {
+        ErrorSeverity.BLOQUEO -> MaterialTheme.colorScheme.error
+        ErrorSeverity.ADVERTENCIA -> MaterialTheme.colorScheme.tertiary
+        ErrorSeverity.INFO -> MaterialTheme.colorScheme.secondary
+    }
+
+    // ✅ Fix dark mode: usa onError/onTertiary/onSecondary en lugar de Color.White
+    //    Material3 garantiza contraste correcto en ambos modos
+    val labelColor = when (severity) {
+        ErrorSeverity.BLOQUEO -> MaterialTheme.colorScheme.onError
+        ErrorSeverity.ADVERTENCIA -> MaterialTheme.colorScheme.onTertiary
+        ErrorSeverity.INFO -> MaterialTheme.colorScheme.onSecondary
+    }
+
+    val text = when (severity) {
+        ErrorSeverity.BLOQUEO -> "BLOQUEO"
+        ErrorSeverity.ADVERTENCIA -> "ADVERTENCIA"
+        ErrorSeverity.INFO -> "INFORMATIVO"
     }
 
     AssistChip(
@@ -262,10 +280,13 @@ fun SeverityBadge(severity: ErrorSeverity) {
                 text = text,
                 style = MaterialTheme.typography.labelMedium,
                 fontWeight = FontWeight.Bold,
-                color = Color.White
+                color = labelColor
             )
         },
-        colors = AssistChipDefaults.assistChipColors(containerColor = color)
+        colors = AssistChipDefaults.assistChipColors(
+            containerColor = containerColor,
+            labelColor = labelColor
+        )
     )
 }
 
@@ -360,7 +381,6 @@ fun ActionsCard(actions: List<String>) {
                 horizontalArrangement = Arrangement.spacedBy(10.dp),
                 verticalAlignment = Alignment.Top
             ) {
-                // Número en caja
                 Box(
                     modifier = Modifier
                         .size(20.dp)

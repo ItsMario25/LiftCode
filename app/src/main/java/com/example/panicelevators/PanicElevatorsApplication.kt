@@ -2,12 +2,14 @@
 package com.example.panicelevators
 
 import android.app.Application
+import android.util.Log
 import com.example.panicelevators.data.datastore.PreferencesManager
 import com.example.panicelevators.data.repository.FavoritesRepository
 import com.example.panicelevators.data.repository.RecentRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import com.example.panicelevators.BuildConfig
 
 class PanicElevatorsApplication : Application() {
 
@@ -28,10 +30,14 @@ class PanicElevatorsApplication : Application() {
         CoroutineScope(Dispatchers.IO).launch {
             com.example.panicelevators.data.model.ErrorMock.loadErrorsFromAssets(this@PanicElevatorsApplication)
                 .onSuccess { errors ->
-                    android.util.Log.d("ErrorLift", "Cargados ${errors.size} códigos de error")
+                    if (BuildConfig.DEBUG) {
+                        Log.d("LiftCode", "Cargados ${errors.size} códigos de error")
+                    }
                 }
                 .onFailure { error ->
-                    android.util.Log.e("ErrorLift", "Error al cargar códigos: ${error.message}")
+                    if (BuildConfig.DEBUG) {
+                        Log.e("LiftCode", "Error al cargar códigos: ${error.message}")
+                    }
                 }
         }
     }
