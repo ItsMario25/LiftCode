@@ -229,6 +229,299 @@
     ]
   },
   {
+    "code": "E 1B",
+    "title": "Contacto de placa porta-peines superior derecha",
+    "description": "Fallo en el contacto de seguridad de la placa porta-peines en la parte superior derecha de la escalera mecánica",
+    "brand": "Schindler",
+    "equipment": "Escalera mecánica",
+    "category": "Contactos de seguridad",
+    "severity": "Alta",
+    "causes": [
+      "Contacto defectuoso o mal ajustado en lado derecho",
+      "Acumulación de suciedad en el contacto",
+      "Placa porta-peines desalineada en lado derecho",
+      "Cableado suelto o dañado"
+    ],
+    "actions": [
+      "Verificar el estado del contacto superior derecho",
+      "Limpiar el contacto y revisar conexiones eléctricas",
+      "Comprobar la alineación de la placa porta-peines derecha",
+      "Reemplazar el contacto si presenta daños"
+    ]
+  },
+  {
+    "code": "E 1C",
+    "title": "Contacto de entrada de pasamanos superior derecho",
+    "description": "Fallo en el contacto de seguridad de la entrada del pasamanos en la parte superior derecha",
+    "brand": "Schindler",
+    "equipment": "Escalera mecánica",
+    "category": "Contactos de seguridad",
+    "severity": "Alta",
+    "causes": [
+      "Contacto defectuoso en lado derecho",
+      "Pasamanos desalineado en entrada superior derecha",
+      "Suciedad o residuos en el mecanismo",
+      "Fallo en el sensor de monitoreo del pasamanos"
+    ],
+    "actions": [
+      "Inspeccionar el contacto de entrada superior derecho",
+      "Verificar la alineación y tensión del pasamanos derecho",
+      "Limpiar el área de entrada del pasamanos",
+      "Reemplazar el contacto si es necesario"
+    ]
+  },
+  {
+    "code": "E 1D",
+    "title": "Contacto de zócalo inferior",
+    "description": "Fallo en el contacto de seguridad del zócalo en la parte inferior de la escalera",
+    "brand": "Schindler",
+    "equipment": "Escalera mecánica",
+    "category": "Contactos de seguridad",
+    "severity": "Alta",
+    "causes": [
+      "Contacto de zócalo inferior activado por obstrucción",
+      "Contacto defectuoso o desajustado",
+      "Acumulación de objetos extraños en el zócalo inferior"
+    ],
+    "actions": [
+      "Inspeccionar visualmente el zócalo inferior",
+      "Retirar cualquier obstrucción presente",
+      "Verificar el estado y ajuste del contacto",
+      "Probar el funcionamiento del contacto tras limpieza"
+    ]
+  },
+  {
+    "code": "E 1E",
+    "title": "Inversión de marcha detectada",
+    "description": "El sistema ha detectado una inversión no autorizada en el sentido de marcha de la escalera",
+    "brand": "Schindler",
+    "equipment": "Escalera mecánica",
+    "category": "Seguridad",
+    "severity": "Crítica",
+    "causes": [
+      "Fallo en el sistema de detección de velocidad",
+      "Pérdida de tensión en el motor de tracción",
+      "Sobrecarga que provoca marcha atrás",
+      "Sensor de detección de inversión defectuoso"
+    ],
+    "actions": [
+      "Verificar el estado del sistema de detección de inversión",
+      "Comprobar el freno de servicio y freno auxiliar",
+      "Inspeccionar el motor y el variador de frecuencia",
+      "Revisar la carga de la escalera antes de reiniciar"
+    ]
+  },
+  {
+    "code": "E 1F",
+    "title": "Fallo del freno auxiliar",
+    "description": "El freno auxiliar de la escalera mecánica no responde correctamente",
+    "brand": "Schindler",
+    "equipment": "Escalera mecánica",
+    "category": "Mecánico",
+    "severity": "Crítica",
+    "causes": [
+      "Freno auxiliar desgastado o defectuoso",
+      "Fallo en el circuito de control del freno",
+      "Contacto de confirmación del freno abierto",
+      "Bobina del freno defectuosa"
+    ],
+    "actions": [
+      "Verificar el estado mecánico del freno auxiliar",
+      "Comprobar el circuito de control y bobina",
+      "Medir la resistencia de la bobina del freno",
+      "Reemplazar el freno auxiliar si es necesario"
+    ]
+  },
+  {
+    "code": "E 20",
+    "title": "Contacto de cadena de tracción inferior",
+    "description": "Fallo en el contacto de seguridad de la cadena de tracción en la parte inferior",
+    "brand": "Schindler",
+    "equipment": "Escalera mecánica",
+    "category": "Contactos de seguridad",
+    "severity": "Alta",
+    "causes": [
+      "Contacto de cadena inferior defectuoso",
+      "Cadena suelta o con desgaste excesivo",
+      "Acumulación de suciedad en el contacto",
+      "Desalineación de la cadena de tracción inferior"
+    ],
+    "actions": [
+      "Inspeccionar el contacto inferior de cadena",
+      "Verificar tensión y estado de la cadena",
+      "Limpiar y ajustar el contacto",
+      "Reemplazar cadena si presenta desgaste excesivo"
+    ]
+  },
+  {
+    "code": "E 21",
+    "title": "Detector de humos inferior",
+    "description": "Activación del detector de humos en la parte inferior de la escalera",
+    "brand": "Schindler",
+    "equipment": "Escalera mecánica",
+    "category": "Seguridad",
+    "severity": "Crítica",
+    "causes": [
+      "Presencia real de humo o incendio en zona inferior",
+      "Detector de humos sucio o defectuoso",
+      "Falsa alarma por polvo o vapor en zona de foso",
+      "Fallo en el circuito del detector"
+    ],
+    "actions": [
+      "Verificar si existe condición real de incendio en zona inferior",
+      "Inspeccionar el estado del detector de humos inferior",
+      "Limpiar o reemplazar el detector si es necesario",
+      "Resetear el sistema tras confirmar seguridad"
+    ]
+  },
+  {
+    "code": "E 22",
+    "title": "Fallo en el sistema de lubricación",
+    "description": "El sistema de lubricación automática de cadenas no funciona correctamente",
+    "brand": "Schindler",
+    "equipment": "Escalera mecánica",
+    "category": "Mecánico",
+    "severity": "Media",
+    "causes": [
+      "Depósito de lubricante vacío",
+      "Bomba de lubricación defectuosa",
+      "Tuberías de lubricación obstruidas",
+      "Sensor de nivel de lubricante defectuoso"
+    ],
+    "actions": [
+      "Verificar el nivel de lubricante en el depósito",
+      "Comprobar el funcionamiento de la bomba",
+      "Inspeccionar y limpiar las tuberías de lubricación",
+      "Rellenar el depósito con el lubricante especificado"
+    ]
+  },
+  {
+    "code": "E 23",
+    "title": "Contacto de placa porta-peines inferior derecha",
+    "description": "Fallo en el contacto de seguridad de la placa porta-peines en la parte inferior derecha",
+    "brand": "Schindler",
+    "equipment": "Escalera mecánica",
+    "category": "Contactos de seguridad",
+    "severity": "Alta",
+    "causes": [
+      "Contacto defectuoso en el lado inferior derecho",
+      "Placa porta-peines inferior derecha desalineada",
+      "Acumulación de suciedad en el contacto",
+      "Obstrucción en el peine inferior derecho"
+    ],
+    "actions": [
+      "Verificar el estado del contacto inferior derecho",
+      "Limpiar y ajustar el contacto",
+      "Comprobar alineación de la placa porta-peines",
+      "Reemplazar contacto si presenta daños"
+    ]
+  },
+  {
+    "code": "E 24",
+    "title": "Contacto de entrada de pasamanos inferior derecho",
+    "description": "Fallo en el contacto de seguridad de la entrada del pasamanos en la parte inferior derecha",
+    "brand": "Schindler",
+    "equipment": "Escalera mecánica",
+    "category": "Contactos de seguridad",
+    "severity": "Alta",
+    "causes": [
+      "Contacto defectuoso en entrada inferior derecha",
+      "Pasamanos desalineado en zona inferior derecha",
+      "Suciedad en el mecanismo de entrada",
+      "Sensor de monitoreo defectuoso"
+    ],
+    "actions": [
+      "Inspeccionar contacto inferior derecho de pasamanos",
+      "Verificar alineación y tensión del pasamanos",
+      "Limpiar el área de entrada inferior derecha",
+      "Reemplazar contacto defectuoso"
+    ]
+  },
+  {
+    "code": "E 30",
+    "title": "Fallo en la fuente de alimentación del control",
+    "description": "La fuente de alimentación del sistema de control presenta un fallo",
+    "brand": "Schindler",
+    "equipment": "Escalera mecánica",
+    "category": "Eléctrico/Motor",
+    "severity": "Crítica",
+    "causes": [
+      "Tensión de alimentación fuera de rango",
+      "Fallo en la fuente de alimentación interna",
+      "Cortocircuito en el circuito de control",
+      "Fusible de control fundido"
+    ],
+    "actions": [
+      "Verificar la tensión de alimentación principal",
+      "Comprobar los fusibles del circuito de control",
+      "Inspeccionar la fuente de alimentación interna",
+      "Revisar el cableado del circuito de control"
+    ]
+  },
+  {
+    "code": "E 31",
+    "title": "Error de comunicación con el panel de control",
+    "description": "Fallo en la comunicación entre la placa principal y el panel de control de la escalera",
+    "brand": "Schindler",
+    "equipment": "Escalera mecánica",
+    "category": "Eléctrico/Motor",
+    "severity": "Alta",
+    "causes": [
+      "Cable de comunicación defectuoso o desconectado",
+      "Placa de control dañada",
+      "Interferencia electromagnética en el bus de datos",
+      "Fallo en el protocolo de comunicación"
+    ],
+    "actions": [
+      "Verificar las conexiones del cable de comunicación",
+      "Comprobar la integridad del cableado del bus",
+      "Reiniciar el sistema de control",
+      "Reemplazar la placa de control si es necesario"
+    ]
+  },
+  {
+    "code": "E 40",
+    "title": "Sobre-velocidad del motor 20%",
+    "description": "El motor ha excedido el 20% de su velocidad nominal — condición crítica de seguridad",
+    "brand": "Schindler",
+    "equipment": "Escalera mecánica",
+    "category": "Eléctrico/Motor",
+    "severity": "Crítica",
+    "causes": [
+      "Fallo grave en el variador de frecuencia",
+      "Pérdida total del control de velocidad",
+      "Sensor de velocidad completamente averiado",
+      "Fallo en el freno de servicio"
+    ],
+    "actions": [
+      "No reiniciar el equipo hasta inspección completa",
+      "Verificar el freno de servicio y freno auxiliar",
+      "Inspeccionar el variador de frecuencia",
+      "Contactar servicio técnico especializado"
+    ]
+  },
+  {
+    "code": "E 41",
+    "title": "Fallo en el relé de secuencia de fases",
+    "description": "El relé de protección de secuencia de fases ha detectado un problema en la alimentación trifásica",
+    "brand": "Schindler",
+    "equipment": "Escalera mecánica",
+    "category": "Eléctrico/Motor",
+    "severity": "Crítica",
+    "causes": [
+      "Secuencia de fases incorrecta",
+      "Pérdida de una fase en la alimentación",
+      "Relé de secuencia de fases defectuoso",
+      "Fluctuaciones en la red eléctrica"
+    ],
+    "actions": [
+      "Verificar la secuencia de fases con un analizador",
+      "Comprobar el estado del relé de secuencia",
+      "Revisar todas las conexiones del tablero eléctrico",
+      "Contactar a la compañía eléctrica si el problema persiste"
+    ]
+  },
+  {
     "code": "E 42",
     "title": "Contacto de zócalo parte central superior",
     "description": "Fallo en el contacto de seguridad del zócalo en la sección central superior",
@@ -239,350 +532,138 @@
     "causes": [
       "Obstrucción en el zócalo central superior",
       "Contacto defectuoso",
-      "Acumulación de residuos",
-      "Desajuste mecánico"
+      "Acumulación de residuos"
     ],
     "actions": [
-      "Inspeccionar el área del zócalo central superior",
-      "Retirar cualquier obstrucción",
-      "Verificar estado del contacto",
-      "Ajustar o reemplazar contacto según corresponda"
+      "Inspeccionar el zócalo central superior",
+      "Retirar obstrucciones",
+      "Verificar y ajustar el contacto",
+      "Limpiar la zona del zócalo"
     ]
   },
   {
     "code": "E 43",
-    "title": "Nivel de aceite del motor de tracción",
-    "description": "Nivel de aceite insuficiente o anormal en el motor de tracción",
+    "title": "Contacto de zócalo parte central inferior",
+    "description": "Fallo en el contacto de seguridad del zócalo en la sección central inferior",
     "brand": "Schindler",
     "equipment": "Escalera mecánica",
-    "category": "Mantenimiento",
+    "category": "Contactos de seguridad",
     "severity": "Alta",
     "causes": [
-      "Fuga de aceite en el motor",
-      "Nivel bajo por falta de mantenimiento",
-      "Sensor de nivel defectuoso",
-      "Consumo anormal de lubricante"
+      "Obstrucción en el zócalo central inferior",
+      "Contacto defectuoso o desajustado",
+      "Acumulación de residuos en zona central"
     ],
     "actions": [
-      "Verificar nivel de aceite en el motor",
-      "Inspeccionar posibles fugas",
-      "Rellenar aceite según especificaciones",
-      "Revisar funcionamiento del sensor de nivel"
+      "Inspeccionar el zócalo central inferior",
+      "Retirar obstrucciones presentes",
+      "Verificar y ajustar el contacto",
+      "Limpiar la zona del zócalo inferior"
     ]
   },
   {
     "code": "E 44",
-    "title": "Parámetro perdido",
-    "description": "Pérdida de parámetros de configuración en el controlador",
+    "title": "Fallo en el termistor del motor",
+    "description": "El termistor de protección térmica del motor ha detectado temperatura excesiva",
     "brand": "Schindler",
     "equipment": "Escalera mecánica",
-    "category": "Electrónico",
+    "category": "Eléctrico/Motor",
     "severity": "Alta",
     "causes": [
-      "Fallo en la memoria del controlador",
-      "Batería de respaldo agotada",
-      "Interferencia electromagnética",
-      "Actualización o programación incorrecta"
+      "Temperatura del motor por encima del límite",
+      "Sistema de ventilación del motor deficiente",
+      "Sobrecarga prolongada del motor",
+      "Termistor defectuoso"
     ],
     "actions": [
-      "Verificar batería de respaldo del controlador",
-      "Reprogramar parámetros desde copia de seguridad",
-      "Revisar integridad del controlador",
-      "Realizar respaldo de configuración tras restaurar"
+      "Dejar enfriar el motor antes de reiniciar",
+      "Verificar el sistema de ventilación del motor",
+      "Comprobar la carga de la escalera",
+      "Inspeccionar el termistor y su cableado"
     ]
   },
   {
     "code": "E 45",
-    "title": "Control del forro de freno",
-    "description": "Desgaste o fallo en el sistema de monitoreo del forro de freno",
+    "title": "Fallo en el contactor principal",
+    "description": "El contactor principal de alimentación del motor no responde correctamente",
     "brand": "Schindler",
     "equipment": "Escalera mecánica",
-    "category": "Mecánico",
+    "category": "Contactor",
     "severity": "Crítica",
     "causes": [
-      "Desgaste excesivo del forro de freno",
-      "Sensor de desgaste defectuoso",
-      "Freno mal ajustado",
-      "Sobrecalentamiento del freno"
+      "Contactor principal con contactos soldados o quemados",
+      "Bobina del contactor defectuosa",
+      "Fallo en el circuito de mando del contactor",
+      "Sobrecalentamiento del contactor"
     ],
     "actions": [
-      "Inspeccionar visualmente el estado del forro de freno",
-      "Medir espesor del material de fricción",
-      "Reemplazar forros si están desgastados",
-      "Verificar funcionamiento del sensor de desgaste"
+      "Verificar el estado físico del contactor principal",
+      "Medir continuidad de bobina y contactos principales",
+      "Reemplazar el contactor si está dañado",
+      "Revisar el circuito de mando asociado"
     ]
   },
   {
-    "code": "E 4A",
-    "title": "Botón de parada en edificio / Contacto placa porta-peines superior derecha",
-    "description": "Activación de parada de emergencia desde edificio o fallo en contacto de placa porta-peines superior derecha",
+    "code": "E 50",
+    "title": "Fallo en el sistema de monitoreo de escalones",
+    "description": "El sistema de detección de escalones faltantes o dañados ha activado una alarma",
     "brand": "Schindler",
     "equipment": "Escalera mecánica",
     "category": "Seguridad",
     "severity": "Crítica",
     "causes": [
-      "Botón de parada remoto activado",
-      "Contacto de placa porta-peines superior derecha defectuoso",
-      "Cableado del circuito de seguridad",
-      "Interfaz con sistema de seguridad del edificio"
+      "Escalón faltante o desplazado",
+      "Sensor de detección de escalones defectuoso",
+      "Daño estructural en la cadena de escalones",
+      "Obstrucción en el sistema de guía de escalones"
     ],
     "actions": [
-      "Verificar si existe parada remota activa",
-      "Inspeccionar contacto porta-peines superior derecha",
-      "Revisar integridad del circuito de seguridad",
-      "Resetear sistema tras identificar causa"
+      "Inspeccionar visualmente todos los escalones",
+      "Verificar el estado del sensor de detección",
+      "No operar el equipo hasta confirmar integridad",
+      "Contactar servicio técnico para revisión completa"
     ]
   },
   {
-    "code": "E 4C",
-    "title": "Interrupción circuito de seguridad / Control de excitación de contactores",
-    "description": "Interrupción en el circuito de seguridad o fallo en excitación de contactores",
-    "brand": "Schindler",
-    "equipment": "Escalera mecánica",
-    "category": "Eléctrico",
-    "severity": "Crítica",
-    "causes": [
-      "Apertura de algún contacto de seguridad",
-      "Fallo en la alimentación de bobinas de contactores",
-      "Cableado suelto o cortado",
-      "Contactores con bobinas defectuosas"
-    ],
-    "actions": [
-      "Revisar todos los contactos de seguridad",
-      "Verificar continuidad del circuito de seguridad",
-      "Comprobar alimentación de bobinas",
-      "Reemplazar contactores defectuosos"
-    ]
-  },
-  {
-    "code": "E 4E",
-    "title": "Termistor PTC inferior",
-    "description": "Sobrecalentamiento detectado por termistor PTC en parte inferior",
-    "brand": "Schindler",
-    "equipment": "Escalera mecánica",
-    "category": "Temperatura",
-    "severity": "Alta",
-    "causes": [
-      "Sobrecalentamiento del motor o componentes",
-      "Termistor PTC defectuoso",
-      "Fallo en sistema de ventilación",
-      "Sobrecarga del equipo"
-    ],
-    "actions": [
-      "Verificar temperatura real de componentes",
-      "Comprobar estado del termistor PTC",
-      "Revisar sistema de refrigeración",
-      "Identificar causa de sobrecalentamiento"
-    ]
-  },
-  {
-    "code": "E 4F",
-    "title": "Desconexión con fallo de lubricación",
-    "description": "Parada automática por fallo en el sistema de lubricación",
-    "brand": "Schindler",
-    "equipment": "Escalera mecánica",
-    "category": "Mantenimiento",
-    "severity": "Alta",
-    "causes": [
-      "Sistema de lubricación automática sin funcionamiento",
-      "Nivel de lubricante insuficiente",
-      "Bomba de lubricación defectuosa",
-      "Tuberías de lubricación obstruidas"
-    ],
-    "actions": [
-      "Verificar nivel y estado del lubricante",
-      "Comprobar funcionamiento de bomba de lubricación",
-      "Revisar tuberías y puntos de lubricación",
-      "Restablecer sistema tras corregir fallo"
-    ]
-  },
-  {
-    "code": "E 4I",
-    "title": "Parada mediante interruptor de llave",
-    "description": "Parada de la escalera por activación de interruptor de llave",
-    "brand": "Schindler",
-    "equipment": "Escalera mecánica",
-    "category": "Seguridad",
-    "severity": "Media",
-    "causes": [
-      "Interruptor de llave en posición de parada",
-      "Mantenimiento programado",
-      "Llave en posición incorrecta",
-      "Fallo en interruptor de llave"
-    ],
-    "actions": [
-      "Verificar posición del interruptor de llave",
-      "Girar llave a posición de marcha si corresponde",
-      "Revisar funcionamiento del interruptor",
-      "Confirmar que no sea una parada por mantenimiento"
-    ]
-  },
-  {
-    "code": "E 4b",
-    "title": "Contacto placa porta-peines inferior derecha / Control nivel de agua",
-    "description": "Fallo en contacto de placa porta-peines inferior derecha o activación de control de nivel de agua",
+    "code": "E 60",
+    "title": "Bloqueo electrónico activado",
+    "description": "El sistema de bloqueo electrónico impide la operación del equipo",
     "brand": "Schindler",
     "equipment": "Escalera mecánica",
     "category": "Seguridad",
     "severity": "Alta",
     "causes": [
-      "Contacto porta-peines inferior derecho defectuoso",
-      "Presencia de agua en foso o zona inferior",
-      "Sensor de nivel de agua activado",
-      "Obstrucción en peine inferior"
-    ],
-    "actions": [
-      "Inspeccionar contacto porta-peines inferior derecho",
-      "Verificar presencia de agua en zona inferior",
-      "Revisar sistema de drenaje",
-      "Secar y limpiar sensores si es necesario"
-    ]
-  },
-  {
-    "code": "E EC",
-    "title": "Error específico de instalación",
-    "description": "Error particular de la configuración o componentes de la instalación",
-    "brand": "Schindler",
-    "equipment": "Escalera mecánica",
-    "category": "Configuración",
-    "severity": "Variable",
-    "causes": [
-      "Configuración específica del sitio",
-      "Componentes adicionales instalados",
-      "Personalización de parámetros",
-      "Integración con sistemas externos"
-    ],
-    "actions": [
-      "Consultar documentación específica de la instalación",
-      "Verificar componentes adicionales",
-      "Revisar parámetros personalizados",
-      "Contactar soporte técnico especializado"
-    ]
-  },
-  {
-    "code": "E EE",
-    "title": "Sobre-velocidad del motor 30% / Error específico",
-    "description": "Sobre-velocidad del motor del 30% o error particular de instalación",
-    "brand": "Schindler",
-    "equipment": "Escalera mecánica",
-    "category": "Eléctrico",
-    "severity": "Crítica",
-    "causes": [
-      "Fallo crítico en variador de frecuencia",
-      "Sensor de velocidad sin señal",
-      "Pérdida total de control del motor",
-      "Error específico de configuración"
-    ],
-    "actions": [
-      "Inspeccionar variador de frecuencia urgentemente",
-      "Verificar sensor de velocidad y cableado",
-      "Revisar sistema de control completo",
-      "No operar hasta resolver causa"
-    ]
-  },
-  {
-    "code": "E EF",
-    "title": "Error específico de instalación",
-    "description": "Error particular de la instalación no cubierto por códigos estándar",
-    "brand": "Schindler",
-    "equipment": "Escalera mecánica",
-    "category": "Configuración",
-    "severity": "Variable",
-    "causes": [
-      "Configuración específica no estándar",
-      "Hardware adicional instalado",
-      "Software personalizado",
-      "Condiciones particulares del sitio"
-    ],
-    "actions": [
-      "Consultar documentación de la instalación",
-      "Revisar historial de modificaciones",
-      "Contactar soporte técnico",
-      "Verificar integración con otros sistemas"
-    ]
-  },
-  {
-    "code": "E ER",
-    "title": "Distancia de frenado excesiva",
-    "description": "La distancia de frenado de la escalera supera los límites permitidos",
-    "brand": "Schindler",
-    "equipment": "Escalera mecánica",
-    "category": "Mecánico",
-    "severity": "Crítica",
-    "causes": [
-      "Desgaste del sistema de freno",
-      "Freno mal ajustado",
-      "Sobrecarga del equipo",
-      "Problema en el sistema de control de frenado"
-    ],
-    "actions": [
-      "Inspeccionar y ajustar sistema de freno",
-      "Verificar estado de forros y discos de freno",
-      "Revisar parámetros de frenado en controlador",
-      "Realizar pruebas de frenado"
-    ]
-  },
-  {
-    "code": "E Eb",
-    "title": "Reset tensión encendida / Parada consecutiva",
-    "description": "Reinicio por tensión de encendido o paradas repetitivas consecutivas",
-    "brand": "Schindler",
-    "equipment": "Escalera mecánica",
-    "category": "Eléctrico",
-    "severity": "Media",
-    "causes": [
-      "Ciclos de encendido repetitivos",
-      "Fallo intermitente en alimentación",
-      "Paradas consecutivas por fallos no resueltos",
-      "Problema en fuente de alimentación"
-    ],
-    "actions": [
-      "Verificar estabilidad de alimentación eléctrica",
-      "Revisar historial de fallos anteriores",
-      "Inspeccionar fuente de poder del controlador",
-      "Corregir causa raíz de paradas repetitivas"
-    ]
-  },
-  {
-    "code": "E Ed",
-    "title": "Corte de corriente > 250 ms con SAI / Error específico",
-    "description": "Corte de alimentación superior a 250 ms con sistema SAI presente o error de instalación",
-    "brand": "Schindler",
-    "equipment": "Escalera mecánica",
-    "category": "Eléctrico",
-    "severity": "Alta",
-    "causes": [
-      "Fallo en suministro eléctrico principal",
-      "SAI (UPS) sin funcionamiento adecuado",
-      "Corte de energía prolongado",
-      "Problema en transferencia de alimentación"
-    ],
-    "actions": [
-      "Verificar estado del SAI y baterías",
-      "Revisar suministro eléctrico principal",
-      "Comprobar sistema de transferencia automática",
-      "Evaluar capacidad del sistema de respaldo"
-    ]
-  },
-  {
-    "code": "E Er",
-    "title": "Error con bloqueo electrónico",
-    "description": "Error detectado con bloqueo electrónico activado",
-    "brand": "Schindler",
-    "equipment": "Escalera mecánica",
-    "category": "Electrónico",
-    "severity": "Alta",
-    "causes": [
-      "Fallo en sistema de bloqueo electrónico",
-      "Condición de seguridad activa",
-      "Comunicación con bloqueo electrónico perdida",
-      "Intento de operación no autorizada"
+      "Bloqueo activado por mantenimiento programado",
+      "Fallo en el sistema de desbloqueo",
+      "Intento de operación no autorizada",
+      "Error en el sistema de control de acceso"
     ],
     "actions": [
       "Verificar estado del bloqueo electrónico",
-      "Revisar condiciones de seguridad",
-      "Comprobar comunicación con el dispositivo",
-      "Realizar reset del sistema de bloqueo"
+      "Revisar condiciones de seguridad del equipo",
+      "Comprobar comunicación con el dispositivo de control",
+      "Realizar reset del sistema de bloqueo con autorización"
+    ]
+  },
+  {
+    "code": "Err01",
+    "title": "Protección de la unidad inversora",
+    "description": "La unidad inversora del variador de frecuencia ha activado su protección interna",
+    "brand": "MONARCH",
+    "equipment": "Ascensor",
+    "category": "Eléctrico",
+    "severity": "Crítica",
+    "causes": [
+      "Cortocircuito en la salida del circuito principal",
+      "Cable de conexión del motor demasiado largo",
+      "Temperatura de trabajo excesiva",
+      "Conexiones internas flojas"
+    ],
+    "actions": [
+      "Verificar que no haya cortocircuito en la salida",
+      "Instalar un reactor o filtro de salida si el cable es largo",
+      "Comprobar el canal de aire y el ventilador de refrigeración",
+      "Contactar al servicio técnico autorizado MONARCH"
     ]
   },
   {
@@ -814,6 +895,384 @@
       "Verificar estado de protecciones eléctricas",
       "Inspeccionar contactor principal",
       "Revisar conexiones en tablero"
+    ]
+  },
+  {
+    "code": "Err13",
+    "title": "Fallo en la detección del encoder",
+    "description": "El encoder del motor no envía señal correcta al controlador",
+    "brand": "MONARCH",
+    "equipment": "Ascensor",
+    "category": "Electrónico",
+    "severity": "Crítica",
+    "causes": [
+      "Encoder dañado o desconectado",
+      "Cable del encoder roto o con interferencias",
+      "Encoder mal ajustado mecánicamente",
+      "Tarjeta de encoder del variador defectuosa"
+    ],
+    "actions": [
+      "Verificar la conexión del cable del encoder",
+      "Comprobar el estado físico del encoder",
+      "Revisar la tarjeta de interfaz del encoder",
+      "Reemplazar el encoder si está dañado"
+    ]
+  },
+  {
+    "code": "Err14",
+    "title": "Fallo en el contactor de salida del motor",
+    "description": "El contactor entre el variador y el motor no opera correctamente",
+    "brand": "MONARCH",
+    "equipment": "Ascensor",
+    "category": "Eléctrico",
+    "severity": "Crítica",
+    "causes": [
+      "Contactor de salida defectuoso",
+      "Contacto de confirmación del contactor abierto",
+      "Bobina del contactor defectuosa",
+      "Fallo en el circuito de mando del contactor"
+    ],
+    "actions": [
+      "Verificar el estado del contactor de salida",
+      "Medir continuidad de la bobina",
+      "Comprobar el contacto auxiliar de confirmación",
+      "Reemplazar el contactor si es necesario"
+    ]
+  },
+  {
+    "code": "Err15",
+    "title": "Timeout en el arranque del motor",
+    "description": "El motor no alcanza la velocidad requerida en el tiempo establecido",
+    "brand": "MONARCH",
+    "equipment": "Ascensor",
+    "category": "Eléctrico",
+    "severity": "Alta",
+    "causes": [
+      "Freno mecánico no libera al arranque",
+      "Parámetros de arranque incorrectos",
+      "Carga excesiva en la cabina",
+      "Problema en el circuito de control del freno"
+    ],
+    "actions": [
+      "Verificar que el freno libera correctamente al arranque",
+      "Revisar los parámetros de tiempo de arranque",
+      "Comprobar la carga de la cabina",
+      "Inspeccionar el circuito de control del freno"
+    ]
+  },
+  {
+    "code": "Err16",
+    "title": "Fallo en la zona de nivelación",
+    "description": "El ascensor no detecta correctamente la zona de nivelación en las paradas",
+    "brand": "MONARCH",
+    "equipment": "Ascensor",
+    "category": "Electrónico",
+    "severity": "Alta",
+    "causes": [
+      "Sensor de zona de nivelación defectuoso",
+      "Imán de nivelación desplazado",
+      "Cableado del sensor dañado",
+      "Placa de control con fallo en entrada de nivelación"
+    ],
+    "actions": [
+      "Verificar el estado del sensor de nivelación",
+      "Comprobar la posición del imán de nivelación",
+      "Inspeccionar el cableado del sensor",
+      "Ajustar la posición del imán si es necesario"
+    ]
+  },
+  {
+    "code": "Err17",
+    "title": "Fallo en la cerradura de puerta de piso",
+    "description": "La cerradura de la puerta de piso no confirma el estado correcto de cierre",
+    "brand": "MONARCH",
+    "equipment": "Ascensor",
+    "category": "Seguridad",
+    "severity": "Crítica",
+    "causes": [
+      "Cerradura de puerta de piso defectuosa",
+      "Puerta de piso mal alineada",
+      "Contacto de cerradura con suciedad o desgaste",
+      "Cableado de la cerradura dañado"
+    ],
+    "actions": [
+      "Inspeccionar el estado de la cerradura de puerta de piso",
+      "Verificar la alineación de la puerta",
+      "Limpiar y lubricar el mecanismo de cerradura",
+      "Reemplazar la cerradura si está defectuosa"
+    ]
+  },
+  {
+    "code": "Err18",
+    "title": "Fallo en la unidad del freno",
+    "description": "La salida de la unidad de freno no responde correctamente",
+    "brand": "MONARCH",
+    "equipment": "Ascensor",
+    "category": "Mecánico",
+    "severity": "Crítica",
+    "causes": [
+      "Bobina del freno defectuosa",
+      "Fallo en el circuito de control del freno",
+      "Contactor del freno con contactos soldados",
+      "Cableado de la unidad de freno dañado"
+    ],
+    "actions": [
+      "Verificar el cableado de la unidad de freno",
+      "Medir la resistencia de la bobina del freno",
+      "Comprobar el contactor del freno",
+      "Recuperar tras inspección o corte de alimentación"
+    ]
+  },
+  {
+    "code": "Err19",
+    "title": "Fallo de secuencia del variador",
+    "description": "El punto de control del variador no se desconecta correctamente tras la operación",
+    "brand": "MONARCH",
+    "equipment": "Ascensor",
+    "category": "Eléctrico",
+    "severity": "Alta",
+    "causes": [
+      "Variador de frecuencia dañado",
+      "Parámetros del variador incorrectos",
+      "Punto de entrada de la máquina de control defectuoso",
+      "Interferencia en la señal de control"
+    ],
+    "actions": [
+      "Verificar los parámetros del variador",
+      "Comprobar el punto de control del variador",
+      "Inspeccionar el cableado de control",
+      "Recuperar desconectando los puntos de control"
+    ]
+  },
+  {
+    "code": "Err20",
+    "title": "Fallo en el interruptor de desaceleración",
+    "description": "El interruptor de desaceleración no opera en el momento correcto durante el recorrido",
+    "brand": "MONARCH",
+    "equipment": "Ascensor",
+    "category": "Electrónico",
+    "severity": "Alta",
+    "causes": [
+      "Interruptor de desaceleración defectuoso",
+      "Imán de desaceleración mal posicionado",
+      "Cableado del interruptor dañado",
+      "Parámetros de tiempo de desaceleración incorrectos"
+    ],
+    "actions": [
+      "Verificar el estado del interruptor de desaceleración",
+      "Comprobar la posición del imán de desaceleración",
+      "Inspeccionar el cableado del interruptor",
+      "Ajustar los parámetros de desaceleración"
+    ]
+  },
+  {
+    "code": "Err21",
+    "title": "Tiempo de recorrido excedido",
+    "description": "El ascensor ha superado el tiempo máximo permitido para completar un recorrido",
+    "brand": "MONARCH",
+    "equipment": "Ascensor",
+    "category": "Configuración",
+    "severity": "Alta",
+    "causes": [
+      "Parámetro de tiempo de recorrido mal configurado",
+      "Problema mecánico que ralentiza el ascensor",
+      "Fallo en el sistema de control de velocidad",
+      "Interruptor de zona de puerta con fallo"
+    ],
+    "actions": [
+      "Verificar y ajustar el parámetro de tiempo de recorrido",
+      "Inspeccionar el estado mecánico del ascensor",
+      "Comprobar el interruptor de zona de puerta",
+      "Revisar el sistema de control de velocidad"
+    ]
+  },
+  {
+    "code": "Err22",
+    "title": "Fallo del interruptor del freno mecánico",
+    "description": "El interruptor de retroalimentación del freno mecánico no confirma el estado correcto",
+    "brand": "MONARCH",
+    "equipment": "Ascensor",
+    "category": "Mecánico",
+    "severity": "Alta",
+    "causes": [
+      "Interruptor del freno mecánico defectuoso",
+      "El freno libera pero el interruptor no lo confirma",
+      "Cableado del interruptor del freno dañado",
+      "Función de detección mal configurada"
+    ],
+    "actions": [
+      "Verificar el estado del interruptor del freno mecánico",
+      "Comprobar el cableado del interruptor",
+      "Si no se tiene esta función, configurar SELECT/BRAKE en OFF",
+      "Recuperar tras eliminar el fallo"
+    ]
+  },
+  {
+    "code": "Err23",
+    "title": "Fallo en la apertura de puerta de cabina",
+    "description": "La puerta de cabina no completa el ciclo de apertura en el tiempo establecido",
+    "brand": "MONARCH",
+    "equipment": "Ascensor",
+    "category": "Mecánico",
+    "severity": "Alta",
+    "causes": [
+      "Operador de puertas defectuoso",
+      "Obstrucción en el recorrido de la puerta",
+      "Relé de apertura de puertas defectuoso",
+      "Parámetros de puerta mal configurados"
+    ],
+    "actions": [
+      "Verificar que el operador de puertas tenga alimentación",
+      "Comprobar si hay obstrucciones en el recorrido",
+      "Revisar el relé de apertura de puertas",
+      "Recuperar tras normalizar el estado de la cerradura"
+    ]
+  },
+  {
+    "code": "Err24",
+    "title": "Fallo en el cierre de puerta de cabina",
+    "description": "La puerta de cabina no completa el ciclo de cierre en el tiempo establecido",
+    "brand": "MONARCH",
+    "equipment": "Ascensor",
+    "category": "Mecánico",
+    "severity": "Alta",
+    "causes": [
+      "Obstrucción en el cierre de la puerta",
+      "Operador de puertas con fallo",
+      "Fotocélula de seguridad activada",
+      "Borde de seguridad activo"
+    ],
+    "actions": [
+      "Verificar que no haya obstrucciones en la puerta",
+      "Comprobar el estado de la fotocélula",
+      "Inspeccionar el operador de puertas",
+      "Revisar el borde de seguridad de la puerta"
+    ]
+  },
+  {
+    "code": "Err25",
+    "title": "Error en la autosintonización del motor",
+    "description": "El proceso de autosintonización del motor no se completó correctamente",
+    "brand": "MONARCH",
+    "equipment": "Ascensor",
+    "category": "Configuración",
+    "severity": "Media",
+    "causes": [
+      "Parámetros del motor introducidos incorrectamente",
+      "Motor desconectado durante la autosintonización",
+      "Freno no liberado durante el proceso",
+      "Interferencias eléctricas durante la prueba"
+    ],
+    "actions": [
+      "Verificar que los parámetros del motor coincidan con la placa de características",
+      "Asegurarse de que el motor esté correctamente conectado",
+      "Confirmar que el freno libera durante la autosintonización",
+      "Repetir el proceso de autosintonización"
+    ]
+  },
+  {
+    "code": "Err26",
+    "title": "Fallo en la tarjeta de expansión",
+    "description": "La tarjeta de expansión no puede ser detectada por el sistema",
+    "brand": "MONARCH",
+    "equipment": "Ascensor",
+    "category": "Electrónico",
+    "severity": "Media",
+    "causes": [
+      "Tarjeta de expansión no instalada correctamente",
+      "Tarjeta de expansión dañada",
+      "Fallo en el cableado de conexión",
+      "Incompatibilidad de versión de firmware"
+    ],
+    "actions": [
+      "Verificar que la tarjeta de expansión esté bien insertada",
+      "Inspeccionar el estado de la tarjeta",
+      "Comprobar el cableado de conexión",
+      "Recuperar tras eliminar el fallo"
+    ]
+  },
+  {
+    "code": "Err27",
+    "title": "Fallo en el módulo de seguridad",
+    "description": "El módulo de seguridad no puede ser detectado cuando la función de apertura avanzada está activa",
+    "brand": "MONARCH",
+    "equipment": "Ascensor",
+    "category": "Seguridad",
+    "severity": "Alta",
+    "causes": [
+      "Módulo de seguridad dañado",
+      "Fallo en el cableado del módulo",
+      "Módulo de seguridad no instalado",
+      "Error de comunicación con el módulo"
+    ],
+    "actions": [
+      "Verificar si el módulo de seguridad está instalado",
+      "Inspeccionar el cableado del módulo",
+      "Comprobar el estado físico del módulo",
+      "Recuperar tras eliminar el fallo"
+    ]
+  },
+  {
+    "code": "Err28",
+    "title": "Fallo en la detección de velocidad",
+    "description": "El sistema no puede detectar correctamente la velocidad del ascensor durante la operación",
+    "brand": "MONARCH",
+    "equipment": "Ascensor",
+    "category": "Electrónico",
+    "severity": "Crítica",
+    "causes": [
+      "Encoder del motor dañado",
+      "Pérdida de señal del encoder durante operación",
+      "Parámetros del variador incorrectos",
+      "Interferencia electromagnética en la señal"
+    ],
+    "actions": [
+      "Verificar la señal del encoder en tiempo real",
+      "Comprobar los parámetros del variador",
+      "Inspeccionar el cableado del encoder",
+      "Recuperar tras eliminar el fallo detectado"
+    ]
+  },
+  {
+    "code": "Err29",
+    "title": "Fallo en el relé de salida del contactor",
+    "description": "El relé de control del contactor de salida no responde correctamente",
+    "brand": "MONARCH",
+    "equipment": "Ascensor",
+    "category": "Eléctrico",
+    "severity": "Alta",
+    "causes": [
+      "Relé 3KA3 defectuoso",
+      "Cableado del relé dañado",
+      "Fallo en el circuito de control",
+      "Contactos del relé soldados"
+    ],
+    "actions": [
+      "Verificar el estado del relé 3KA3",
+      "Comprobar el cableado del relé",
+      "Medir continuidad de los contactos",
+      "Reemplazar el relé si es necesario"
+    ]
+  },
+  {
+    "code": "Err30",
+    "title": "Trampilla de emergencia abierta",
+    "description": "La trampilla de emergencia del ascensor está abierta, impidiendo la operación",
+    "brand": "MONARCH",
+    "equipment": "Ascensor",
+    "category": "Seguridad",
+    "severity": "Crítica",
+    "causes": [
+      "Trampilla de emergencia no cerrada correctamente",
+      "Contacto de la trampilla defectuoso",
+      "Trampilla abierta por acceso de mantenimiento",
+      "Cableado del contacto de trampilla dañado"
+    ],
+    "actions": [
+      "Cerrar correctamente la trampilla de emergencia",
+      "Verificar el estado del contacto de la trampilla",
+      "Ejecutar reinicio de inspección tras cerrar",
+      "Comprobar el cableado del contacto"
     ]
   }
 ]
