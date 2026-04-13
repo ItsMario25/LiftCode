@@ -1,6 +1,7 @@
 // ui/detail/DetailScreen.kt
 package com.example.panicelevators.ui.detail
 
+import android.content.Intent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -17,6 +18,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.Send
 import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Info
@@ -50,6 +52,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -67,11 +70,13 @@ fun DetailScreen(
     navController: NavController,
     favoritesRepository: FavoritesRepository = (navController.context.applicationContext as PanicElevatorsApplication).favoritesRepository
 ) {
+    val context = LocalContext.current
+
     val error = remember(errorCode) {
         try { ErrorMock.getErrorByCode(errorCode) } catch (e: Exception) { null }
     }
 
-    // ✅ Fix optimización: categoryName solo se recalcula cuando cambia error.category
+    // ✅ categoryName precalculado con remember
     val categoryName = remember(error?.category) {
         error?.category?.name
             ?.replace("_", " ")
@@ -94,6 +99,53 @@ fun DetailScreen(
         else -> MaterialTheme.colorScheme.surfaceVariant
     }
 
+    // ✅ Función que construye el texto y lanza el Sharesheet de Android
+    fun shareError() {
+        if (error == null) return
+
+        val severityText = when (error.severity) {
+            ErrorSeverity.BLOQUEO -> "🔴 BLOQUEO"
+            ErrorSeverity.ADVERTENCIA -> "🟡 ADVERTENCIA"
+            ErrorSeverity.INFO -> "🔵 INFORMATIVO"
+        }
+
+        val causesText = error.causes
+            .mapIndexed { i, cause -> "  ${i + 1}. $cause" }
+            .joinToString("\n")
+
+        val actionsText = error.actions
+            .mapIndexed { i, action -> "  ${i + 1}. $action" }
+            .joinToString("\n")
+
+        val shareText = """
+🛗 LiftCode — Código de Error
+
+Código: ${error.code}
+Equipo: ${error.brand} — ${error.equipment}
+Título: ${error.title}
+Severidad: $severityText
+Categoría: $categoryName
+
+📋 Descripción:
+${error.description}
+
+⚠️ Posibles causas:
+$causesText
+
+✅ Acciones recomendadas:
+$actionsText
+
+Compartido desde LiftCode
+        """.trimIndent()
+
+        val sendIntent = Intent().apply {
+            action = Intent.ACTION_SEND
+            putExtra(Intent.EXTRA_TEXT, shareText)
+            type = "text/plain"
+        }
+        context.startActivity(Intent.createChooser(sendIntent, "Compartir código ${error.code}"))
+    }
+
     Scaffold(
         topBar = {
             TopAppBar(
@@ -110,6 +162,15 @@ fun DetailScreen(
                     }
                 },
                 actions = {
+                    // ✅ Botón compartir — abre Android Sharesheet
+                    IconButton(onClick = { shareError() }) {
+                        Icon(
+                            Icons.AutoMirrored.Filled.Send,
+                            contentDescription = "Compartir",
+                            tint = MaterialTheme.colorScheme.onSurface
+                        )
+                    }
+                    // Botón favorito
                     IconButton(onClick = {
                         scope.launch {
                             isFavorite = favoritesRepository.toggleFavorite(errorCode)
@@ -235,7 +296,6 @@ fun DetailScreen(
                     EquipmentInfoCard(
                         brand = error.brand,
                         equipment = error.equipment,
-                        // ✅ Usa categoryName precalculado
                         category = categoryName
                     )
                     DescriptionCard(description = error.description)
@@ -252,21 +312,16 @@ fun DetailScreen(
 
 @Composable
 fun SeverityBadge(severity: ErrorSeverity) {
-    // Color del contenedor según severidad
     val containerColor = when (severity) {
         ErrorSeverity.BLOQUEO -> MaterialTheme.colorScheme.error
         ErrorSeverity.ADVERTENCIA -> MaterialTheme.colorScheme.tertiary
         ErrorSeverity.INFO -> MaterialTheme.colorScheme.secondary
     }
-
-    // ✅ Fix dark mode: usa onError/onTertiary/onSecondary en lugar de Color.White
-    //    Material3 garantiza contraste correcto en ambos modos
     val labelColor = when (severity) {
         ErrorSeverity.BLOQUEO -> MaterialTheme.colorScheme.onError
         ErrorSeverity.ADVERTENCIA -> MaterialTheme.colorScheme.onTertiary
         ErrorSeverity.INFO -> MaterialTheme.colorScheme.onSecondary
     }
-
     val text = when (severity) {
         ErrorSeverity.BLOQUEO -> "BLOQUEO"
         ErrorSeverity.ADVERTENCIA -> "ADVERTENCIA"
