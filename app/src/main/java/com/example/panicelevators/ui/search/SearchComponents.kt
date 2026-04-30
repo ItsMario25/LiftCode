@@ -1,6 +1,11 @@
 // ui/search/SearchComponents.kt
 package com.example.panicelevators.ui.search
 
+import androidx.compose.animation.AnimatedContent
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
@@ -8,6 +13,8 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Call
+import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
@@ -19,19 +26,65 @@ import com.example.panicelevators.data.model.ErrorCodeUi
 import com.example.panicelevators.data.model.ErrorSeverity
 
 /**
- * Campo de búsqueda
+ * Campo de búsqueda con botón de micrófono integrado
  */
 @Composable
 fun SearchTextField(
     value: String,
     onValueChange: (String) -> Unit,
+    voiceState: VoiceState = VoiceState.Idle,
+    onMicClick: () -> Unit = {},
     modifier: Modifier = Modifier
 ) {
     OutlinedTextField(
         value = value,
         onValueChange = onValueChange,
         placeholder = { Text("Buscar por código, título o descripción...") },
-        leadingIcon = { Icon(Icons.Default.Search, contentDescription = null) },
+        leadingIcon = {
+            Icon(Icons.Default.Search, contentDescription = null)
+        },
+        // ✅ Botón de micrófono como trailing icon
+        trailingIcon = {
+            AnimatedContent(
+                targetState = voiceState,
+                transitionSpec = {
+                    fadeIn(tween(150)) togetherWith fadeOut(tween(150))
+                },
+                label = "mic_icon"
+            ) { state ->
+                when (state) {
+                    is VoiceState.Listening -> {
+                        // Micrófono activo — tinte en color primary para indicar grabando
+                        IconButton(onClick = onMicClick) {
+                            Icon(
+                                Icons.Default.Clear,
+                                contentDescription = "Detener escucha",
+                                tint = MaterialTheme.colorScheme.primary
+                            )
+                        }
+                    }
+                    is VoiceState.Processing -> {
+                        // Procesando — indicador de carga pequeño
+                        CircularProgressIndicator(
+                            modifier = Modifier
+                                .size(24.dp)
+                                .padding(2.dp),
+                            strokeWidth = 2.dp
+                        )
+                    }
+                    else -> {
+                        // Idle / Error / Result — micrófono normal
+                        IconButton(onClick = onMicClick) {
+                            Icon(
+                                Icons.Default.Call,
+                                contentDescription = "Buscar por voz",
+                                tint = MaterialTheme.colorScheme.onSurfaceVariant
+                            )
+                        }
+                    }
+                }
+            }
+        },
         modifier = modifier.fillMaxWidth(),
         singleLine = true,
         shape = MaterialTheme.shapes.medium
@@ -103,10 +156,6 @@ fun OnlyBlockingSwitch(
 
 /**
  * Tarjeta de resultado de búsqueda
- * ✅ Usa exactamente el mismo patrón que RecentErrorCard:
- *    - Card con containerColor según severidad
- *    - Textos sin color explícito — Card propaga contentColor automáticamente
- *    - SuggestionChip con labelColor = onPrimary igual que HomeComponents
  */
 @Composable
 fun SearchResultCard(
@@ -154,7 +203,6 @@ fun SearchResultCard(
 
             Spacer(modifier = Modifier.width(8.dp))
 
-            // ✅ SuggestionChip con labelColor explícito — igual que RecentErrorCard
             SuggestionChip(
                 onClick = { },
                 label = {

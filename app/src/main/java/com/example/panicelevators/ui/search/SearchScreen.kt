@@ -1,6 +1,10 @@
 // ui/search/SearchScreen.kt
 package com.example.panicelevators.ui.search
 
+import android.Manifest
+import android.content.pm.PackageManager
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -26,26 +30,34 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Snackbar
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.core.content.ContextCompat
 import androidx.navigation.NavController
 import com.example.panicelevators.data.model.ErrorCategory
 import com.example.panicelevators.data.model.ErrorCodeUi
 import com.example.panicelevators.data.model.ErrorMock
 import com.example.panicelevators.data.model.ErrorSeverity
 import com.example.panicelevators.navigation.Screen
+import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -53,11 +65,87 @@ fun SearchScreen(
     navController: NavController,
     onErrorClick: (String) -> Unit
 ) {
+    val context = LocalContext.current
+    val scope = rememberCoroutineScope()
+    val snackbarHostState = remember { SnackbarHostState() }
+
     var searchText by remember { mutableStateOf("") }
     var selectedCategory by remember { mutableStateOf<ErrorCategory?>(null) }
     var onlyBlocking by remember { mutableStateOf(false) }
     var searchResults by remember { mutableStateOf<List<ErrorCodeUi>>(emptyList()) }
     var isLoading by remember { mutableStateOf(true) }
+
+    // ── Voz ──────────────────────────────────────────────────────────────────
+
+    var voiceState by remember { mutableStateOf<VoiceState>(VoiceState.Idle) }
+
+    // Manager del SpeechRecognizer — se destruye cuando el Composable sale
+    val voiceManager = remember {
+        VoiceRecognitionManager(context).apply {
+            setOnStateChange { state ->
+                voiceState = state
+                // Cuando llega un resultado lo insertamos en el campo de búsqueda
+                if (state is VoiceState.Result) {
+                    searchText = state.text
+                    voiceState = VoiceState.Idle
+                }
+            }
+        }
+    }
+
+    // Destruir el manager cuando el Composable sale del árbol
+    DisposableEffect(Unit) {
+        onDispose { voiceManager.destroy() }
+    }
+
+    // Mostrar error de voz en Snackbar
+    LaunchedEffect(voiceState) {
+        if (voiceState is VoiceState.Error) {
+            scope.launch {
+                snackbarHostState.showSnackbar(
+                    message = (voiceState as VoiceState.Error).message
+                )
+                voiceState = VoiceState.Idle
+            }
+        }
+    }
+
+    // Launcher para solicitar permiso de micrófono
+    val permissionLauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.RequestPermission()
+    ) { granted ->
+        if (granted) {
+            voiceManager.startListening()
+        } else {
+            scope.launch {
+                snackbarHostState.showSnackbar(
+                    "Se necesita permiso de micrófono para la búsqueda por voz"
+                )
+            }
+        }
+    }
+
+    // Función que verifica permiso y arranca/detiene el reconocimiento
+    fun handleMicClick() {
+        when (voiceState) {
+            is VoiceState.Listening -> voiceManager.stopListening()
+            is VoiceState.Processing -> { /* esperar */ }
+            else -> {
+                val hasPermission = ContextCompat.checkSelfPermission(
+                    context,
+                    Manifest.permission.RECORD_AUDIO
+                ) == PackageManager.PERMISSION_GRANTED
+
+                if (hasPermission) {
+                    voiceManager.startListening()
+                } else {
+                    permissionLauncher.launch(Manifest.permission.RECORD_AUDIO)
+                }
+            }
+        }
+    }
+
+    // ── Búsqueda ──────────────────────────────────────────────────────────────
 
     LaunchedEffect(searchText, selectedCategory, onlyBlocking) {
         isLoading = true
@@ -82,6 +170,11 @@ fun SearchScreen(
     }
 
     Scaffold(
+        snackbarHost = {
+            SnackbarHost(hostState = snackbarHostState) { data ->
+                Snackbar(snackbarData = data)
+            }
+        },
         topBar = {
             TopAppBar(
                 title = {
@@ -107,7 +200,6 @@ fun SearchScreen(
             NavigationBar(
                 containerColor = MaterialTheme.colorScheme.surfaceContainerLow
             ) {
-                // ✅ Íconos reales — Material3 aplica tinte de selección correctamente
                 NavigationBarItem(
                     selected = false,
                     onClick = {
@@ -138,7 +230,6 @@ fun SearchScreen(
                 .fillMaxSize()
                 .padding(paddingValues)
         ) {
-            // ── Sección de búsqueda y filtros con fondo diferenciado ──────────
             Surface(
                 color = MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.3f),
                 modifier = Modifier.fillMaxWidth()
@@ -150,13 +241,23 @@ fun SearchScreen(
                         .padding(top = 16.dp, bottom = 12.dp),
                     verticalArrangement = Arrangement.spacedBy(12.dp)
                 ) {
-                    // Campo de búsqueda
+                    // ✅ SearchTextField ahora recibe voiceState y onMicClick
                     SearchTextField(
                         value = searchText,
-                        onValueChange = { searchText = it }
+                        onValueChange = { searchText = it },
+                        voiceState = voiceState,
+                        onMicClick = { handleMicClick() }
                     )
 
-                    // Filtros de categoría
+                    // Indicador de estado de voz debajo del campo
+                    AnimatedVisibility(visible = voiceState is VoiceState.Listening) {
+                        Text(
+                            text = "🎤 Escuchando... habla el código de error",
+                            style = MaterialTheme.typography.labelMedium,
+                            color = MaterialTheme.colorScheme.primary
+                        )
+                    }
+
                     Text(
                         text = "Categoría",
                         style = MaterialTheme.typography.labelMedium,
@@ -168,7 +269,6 @@ fun SearchScreen(
                         onCategorySelected = { selectedCategory = it }
                     )
 
-                    // Switch solo bloqueos
                     OnlyBlockingSwitch(
                         checked = onlyBlocking,
                         onCheckedChange = { onlyBlocking = it }
@@ -178,7 +278,6 @@ fun SearchScreen(
 
             HorizontalDivider()
 
-            // ── Contador de resultados ────────────────────────────────────────
             AnimatedVisibility(
                 visible = !isLoading && searchResults.isNotEmpty(),
                 enter = fadeIn(),
@@ -211,7 +310,6 @@ fun SearchScreen(
                 }
             }
 
-            // ── Lista de resultados ───────────────────────────────────────────
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
